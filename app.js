@@ -1,8 +1,12 @@
 const STORAGE_KEY = 'opencode_chat_history';
 
+const CONFIG = {
+  systemPrompt: "You are a helpful, friendly, and concise AI assistant. Respond in a conversational manner. Keep responses brief unless the user asks for detail.",
+  defaultModel: "deepseek-v4-flash-free",
+};
+
 const state = {
   messages: loadMessages(),
-  config: null,
 };
 
 const messagesEl = document.getElementById('messages');
@@ -71,7 +75,7 @@ async function sendMessage(text) {
 
   setLoading(true);
   try {
-    const res = await fetch('/api/chat', {
+    const res = await fetch('/.netlify/functions/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -104,15 +108,6 @@ function clearChat() {
   localStorage.removeItem(STORAGE_KEY);
 }
 
-async function loadConfig() {
-  try {
-    const res = await fetch('/api/config');
-    state.config = await res.json();
-  } catch {
-    console.warn('Could not load config, using defaults');
-  }
-}
-
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
   const text = messageInput.value.trim();
@@ -137,7 +132,6 @@ messageInput.addEventListener('keydown', e => {
 clearBtn.addEventListener('click', clearChat);
 
 (async function init() {
-  await loadConfig();
   renderMessages();
   if (state.messages.length === 0) {
     addMessage('assistant', 'Hello! I\'m your OpenCode assistant. Ask me anything.');
