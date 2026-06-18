@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenCode Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <span class="logo">▲ OPENCODE CHAT</span>
+      </div>
+      <div class="header-right">
+        <select id="modelSelect" class="model-select">
+          <option value="deepseek-v4-flash-free">DeepSeek V4 Flash Free</option>
+          <option value="nemotron-3-ultra-free">Nemotron 3 Ultra Free</option>
+          <option value="mimo-v2.5-free">MiMo-V2.5 Free</option>
+          <option value="north-mini-code-free">North Mini Code Free</option>
+          <option value="big-pickle">Big Pickle Free</option>
+        </select>
+        <button id="clearBtn" class="btn">CLEAR</button>
+      </div>
+    </header>
+
+    <div id="chatContainer" class="chat-container">
+      <div id="messages" class="messages"></div>
+    </div>
+
+    <div class="input-area">
+      <form id="chatForm" class="chat-form">
+        <textarea
+          id="messageInput"
+          class="message-input"
+          placeholder="Type your message..."
+          rows="1"
+        ></textarea>
+        <button type="submit" id="sendBtn" class="btn send-btn">SEND</button>
+      </form>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

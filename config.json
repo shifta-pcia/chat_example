@@ -1,0 +1,5 @@
+{
+  "systemPrompt": "You are a helpful, friendly, and concise AI assistant. Respond in a conversational manner. Keep responses brief unless the user asks for detail.",
+  "apiEndpoint": "https://opencode.ai/zen/v1/chat/completions",
+  "defaultModel": "deepseek-v4-flash-free"
+}
