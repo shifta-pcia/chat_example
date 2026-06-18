@@ -1,6 +1,6 @@
 [build]
-  command = ""
-  publish = "."
+  command = "mkdir -p public && cp -r index.html styles.css app.js config.json public/"
+  publish = "public"
   functions = "netlify/functions"
 
 [functions]
